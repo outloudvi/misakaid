@@ -1,2 +1,2 @@
 # misakaid
-[DRAFT ]"A global identities/users management system", said Misaka #19583.
+[DRAFT] "A global identities/users management system", said Misaka #19583.
