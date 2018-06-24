@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<meta charset=utf8 />
+<title>API Doc - MisakaID</title>
+
+<body>
+  <h1>MisakaID API Doc</h1>
+  <h2> /get </h2>
+  <h3> /get/peer/new - 新增 peer</h3>
+  <ul>
+    <li>
+      参数：
+      <ul>
+        <li>c （可选）: 备注</li>
+      </ul>
+    </li>
+    <li>
+      返回：JSON
+      <ul>
+        <li>
+          <code>
+          uuid: peer 的 UUID<br />
+          enable: true（永远为真）<br />
+          ip: 请求发送者 IP<br />
+          comment: 备注（即输入的 c 参数）<br />
+          createTime: 创建时间<br />
+          lastQueryTime: 最后一次请求的时间<br />
+          </code>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3> /get/peer/destroy/:id - 删除 peer</h3>
+  <p>删除 peer 时，服务端会验证请求的来源 IP 。如果 IP 与新增 peer 时的记录不同，则会返回 403。</p>
+  <ul>
+    <li>
+      参数：
+      <ul>
+        <li>id（必选）: peer 的 UUID</li>
+      </ul>
+    </li>
+    <li>
+      返回：
+      <ul>
+        <li>成功：HTTP 200</li>
+        <li>未找到 UUID：HTTP 404</li>
+        <li>验证身份失败：HTTP 403</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3> /get/event/new/:via/to/:dest - 新增事件</h3>
+  <ul>
+    <li>
+      参数：
+      <ul>
+        <li>via: 源用户 UUID</li>
+        <li>dest: 目标用户 UUID</li>
+        <li>c （可选）: 备注</li>
+      </ul>
+    </li>
+    <li>
+      返回：JSON
+      <ul>
+        <li>
+          <code>
+          uuid: 事件的 UUID<br />
+          via: 源用户 UUID<br />
+          dest: 目标用户 UUID<br />
+          content: 内容<br />
+          createTime: 创建时间<br />
+          read: 是否已读（这种情况下是 false）<br />
+          </code>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</body>
