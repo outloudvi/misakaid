@@ -12,12 +12,12 @@ global.misaka.data = {
 };
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var quitRouter = require('./routes/quit');
 var loadRouter = require('./routes/load');
 var getRouter = require('./routes/get');
 var fetchRouter = require('./routes/fetch');
 var manageRouter = require('./routes/manage');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -32,12 +32,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/quit', quitRouter);
 app.use('/load', loadRouter);
 app.use('/get', getRouter);
 app.use('/fetch', fetchRouter);
 app.use('/manage', manageRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
