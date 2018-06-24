@@ -24,6 +24,8 @@ router.get('/', function (req, res, next) {
       console.info("Data initalized.");
     }
     global.misaka.data = JSON.parse(fsconf);
+    if (!global.misaka.data.connect) global.misaka.data.connect = {};
+    if (!global.misaka.data.cache) global.misaka.data.cache = {};
   } catch (err) {
     console.log(err);
     noerr = false;
