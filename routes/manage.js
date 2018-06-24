@@ -3,10 +3,17 @@ var router = express.Router();
 var fs = require('fs');
 var uuid = require('uuid/v4');
 
-router.get('/show', function (req, res, next) {
+router.get('/show/peer', function (req, res, next) {
   let txt = "";
   for (i in global.misaka.data.connect)
     txt += JSON.stringify(global.misaka.data.connect[i]) + "<br>";
+  res.send(txt);
+});
+
+router.get('/show/event', function (req, res, next) {
+  let txt = "";
+  for (i in global.misaka.data.cache)
+    txt += JSON.stringify(global.misaka.data.cache[i]) + "<br>";
   res.send(txt);
 });
 
